@@ -8,7 +8,7 @@ import java.util.Scanner;
  * @author Sarah Guarino
  * @version 1.0
  */
-public class Main {
+public class RoshamboApp {
     private static Scanner scnr = new Scanner(System.in);
     public static void main(String[] args) {
         ArrayList<Player> players = new ArrayList<>();

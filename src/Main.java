@@ -27,15 +27,17 @@ public class Main {
         players.add(new Human());
         players.get(0).setPlayerName();
 
-        // user decides which player we're playing against
+        // User decides which player we're playing against
         String playerInput = Validator.getFirstChar(scnr, "Would you like to play The Wranglers or The Jets? (w/j): ",
                 "w", "j");
-        // uses answer to initialize player 2
+        // Uses answer to initialize player 2
         switch (playerInput) {
+            // If they choose to play the Wranglers
             case "w":
                 players.add(new Machine());
                 players.get(1).setPlayerName();
                 break;
+            // If they choose to play the Jets
             case "j":
                 players.add(new Robot());
                 players.get(1).setPlayerName();
@@ -49,35 +51,39 @@ public class Main {
             System.out.println();
 
             for (int i = 1; i <= gameRounds; i++) {
-                // announces each round
+                // Announces each round
                 System.out.println("Round " + i + ":");
 
-                // gets the guesses of both players
+                // Gets the guesses of both players
                 players.get(0).setPlayerGuess();
                 players.get(1).setPlayerGuess();
 
-                // prints players picks
+                // Prints players picks
                 System.out.println(players.get(0).getPlayerName() + ": " + players.get(0).getPlayerGuess().toString());
                 System.out.println(players.get(1).getPlayerName() + ": " + players.get(1).getPlayerGuess().toString());
 
-                // compares player 1's and player 2's guesses and calculates a winner for each round.
+                // Compares player 1's and player 2's guesses and calculates a winner for each round.
                 if (Roshambo.compareThese(players.get(0).getPlayerGuess(), players.get(1).getPlayerGuess())) {
+                    //If player 1 beats player 2
                     System.out.println("" + players.get(0).getPlayerName() + " wins this round!");
                     p1Score++;
                 } else if (Roshambo.compareThese(players.get(1).getPlayerGuess(), players.get(0).getPlayerGuess())) {
+                    // If player 2 beats player 2
                     System.out.println("" + players.get(1).getPlayerName() + " wins this round!");
                     p2Score++;
                 } else {
+                    // If neither of them won.
                     System.out.println("Tie!");
                 }
+                // Extra spacing
                 System.out.println();
             }
 
-            // announces final score for each player
+            // Announces final score for each player
             System.out.println(players.get(0).getPlayerName() + ": " + p1Score);
             System.out.println(players.get(1).getPlayerName() + ": " + p2Score);
 
-            // announces winner
+            // Announces winner
             if (p1Score > p2Score) {
                 System.out.println("" + players.get(0).getPlayerName() + " wins the game!");
 
@@ -87,6 +93,7 @@ public class Main {
                 System.out.println("This game was a tie!");
             }
 
+            // Asks the user to enter y/n to go again
             doAgain = Validator.getFirstChar(scnr, "Would you like to play another game? (y/n): ", "y", "n");
             if (doAgain.equals("y")) {
                 anotherGame = true;
@@ -94,8 +101,12 @@ public class Main {
                 anotherGame = false;
             }
 
+            // Extra spacing
             System.out.println();
+
+            // Increases game count
             gamecount++;
+        // Only repeats if user enters 'y'
         } while (anotherGame);
     }
 }

@@ -10,16 +10,25 @@ public final class Robot extends Player {
     private String playerName;
     private Roshambo playerGuess;
 
-
+    /**
+     * Default constructor
+     */
     Robot() {
         playerName = "";
+        playerGuess = Roshambo.ROCK;
     }
 
+    /**
+     * Sets the robot player name
+     */
     @Override
     public void setPlayerName() {
         playerName = "The Jets";
     }
 
+    /**
+     * Sets the robot player guess using Random class
+     */
     @Override
     public void setPlayerGuess() {
         Random robotDice = new Random();
@@ -39,11 +48,19 @@ public final class Robot extends Player {
         }
     }
 
+    /**
+     * gets the robot's player name "The Jets"
+     * @return playerName
+     */
     @Override
     public String getPlayerName() {
         return playerName;
     }
 
+    /**
+     * gets the robot's player guess
+     * @return playerGuess
+     */
     @Override
     public Roshambo getPlayerGuess() {
         return playerGuess;
